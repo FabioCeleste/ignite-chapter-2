@@ -4,7 +4,7 @@ import { Header } from "./components/Header";
 import { Dashboard } from "./components/Dashboard";
 import { useState } from "react";
 import { NewTransactionModal } from "./components/NewTransactionModal";
-import { TransactionsContext } from "./TransactionsContext";
+import { TransactionProvider } from "./hooks/UseTransactions";
 
 export function App() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
@@ -17,7 +17,7 @@ export function App() {
     setIsNewTransactionModalOpen(false);
   }
   return (
-    <TransactionsContext.Provider value={[]}>
+    <TransactionProvider>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
       <Dashboard />
 
@@ -27,6 +27,6 @@ export function App() {
       />
 
       <GlobalStyle />
-    </TransactionsContext.Provider>
+    </TransactionProvider>
   );
 }
